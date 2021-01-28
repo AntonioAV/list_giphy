@@ -25,3 +25,9 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+class Gif {
+  String name, url;
+
+  Gif(this.name, this.url);
+}
