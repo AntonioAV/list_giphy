@@ -79,7 +79,14 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  List<Widget> _listGifs(data) {
+// NOTA: Creamos una lista de Text y la devolvemos.
+  List<Widget> _listGifs(List<Gif> data) {
     List<Widget> gifs = [];
+    for (var gif in data) {
+      gifs.add(
+        Text(gif.name),
+      );
+    }
+    return gifs;
   }
 }
