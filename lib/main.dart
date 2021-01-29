@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:list_giphy/models/gif.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -8,6 +10,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Future<List<Gifs>> _listadoGifs;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,10 +28,4 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
-}
-
-class Gif {
-  String name, url;
-
-  Gif(this.name, this.url);
 }
