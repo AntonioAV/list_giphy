@@ -63,7 +63,8 @@ class _MyAppState extends State<MyApp> {
           // NOTA: A continuacion el -snapshot- recoge la información del future
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return ListView(
+              return GridView.count(
+                crossAxisCount: 2,
                 children: _listGifs(snapshot.data),
               );
             } else if (snapshot.hasError) {
@@ -84,7 +85,17 @@ class _MyAppState extends State<MyApp> {
     List<Widget> gifs = [];
     for (var gif in data) {
       gifs.add(
-        Text(gif.name),
+        Card(
+            child: Column(
+          children: [
+            Expanded(
+              child: Image.network(
+                gif.url,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ],
+        )),
       );
     }
     return gifs;
