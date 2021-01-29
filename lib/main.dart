@@ -58,12 +58,28 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('Material App Bar'),
         ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
-          ),
+        body: FutureBuilder(
+          future: _listadoGifs,
+          // NOTA: A continuacion el -snapshot- recoge la información del future
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView(
+                children: _listGifs(snapshot.data),
+              );
+            } else if (snapshot.hasError) {
+              print(snapshot.error);
+              return Text('Error');
+            }
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          },
         ),
       ),
     );
+  }
+
+  List<Widget> _listGifs(data) {
+    List<Widget> gifs = [];
   }
 }
