@@ -32,6 +32,13 @@ class _MyAppState extends State<MyApp> {
       // NOTA: Convertimos el sting body en un objeto Json.
 
       final jsonData = jsonDecode(body);
+
+      // NOTA: Recorremos la lista jsonData del elemento Data.
+      for (var item in jsonData['data']) {
+        gifs.add(Gif(item['title'], item['images']['downsized']['url']));
+      }
+
+      return gifs;
     } else {
       throw Exception('Falló la conexión');
     }
@@ -40,7 +47,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _getGifs();
+    _listadoGifs = _getGifs();
   }
 
   @override
